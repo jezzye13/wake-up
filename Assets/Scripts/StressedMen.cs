@@ -5,15 +5,9 @@ using UnityEngine;
 public class StressedMen : MonoBehaviour {
 
     [SerializeField] private float _multiplyer;
-    [SerializeField] private Camera _camera;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         Vector2 direction = Vector2.zero;
 
 		if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))

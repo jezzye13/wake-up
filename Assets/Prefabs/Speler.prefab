@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212824204602519966}
   - component: {fileID: 61705964282622696}
   - component: {fileID: 50631745194745832}
-  - component: {fileID: 114738167496962396}
   - component: {fileID: 95532403596202562}
+  - component: {fileID: 114738167496962396}
   m_Layer: 0
   m_Name: Speler
   m_TagString: Player
@@ -58,12 +58,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!61 &61705964282622696
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -117,8 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be20762ace586954ba51b03fc12d8a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _multiplyer: 2
-  _camera: {fileID: 0}
+  _multiplyer: 1.5
 --- !u!212 &212824204602519966
 SpriteRenderer:
   m_ObjectHideFlags: 1
