@@ -2,30 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Dialoog : MonoBehaviour {
 
-    [SerializeField] private bool _isShowing;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    private void OnGUI()
+    [SerializeField] private ScaleScreen _scaleScreen;
+    public event Action OnDialoogBoxShow;
+    private void ShowBox()
     {
-        if(gameObject.activeInHierarchy && !_isShowing)
+        if (OnDialoogBoxShow != null)
+            OnDialoogBoxShow();
+
+        if (!_box.activeInHierarchy)
         {
-            gameObject.SetActive(false);
+            _box.SetActive(true);
         }
-        else if (!gameObject.activeInHierarchy && _isShowing)
+    }
+
+    public event Action OnDialoogBoxExit;
+    private void ExitBox()
+    {
+        if (OnDialoogBoxExit != null)
+            OnDialoogBoxExit();
+
+        if (_box.activeInHierarchy)
         {
-            gameObject.SetActive(true);
+            _box.SetActive(false);
         }
+    }
+    private Text _text;
+    private GameObject _box;
+
+    // Use this for initialization
+    void Start () {
+        _box = transform.GetChild(0).gameObject;
+        _text = _box.transform.GetChild(0).GetComponent<Text>();
+    }
+
+    public void ShowDialoogBox(string message)
+    {
+        ShowBox();
+        _text.text = message;
     }
 }
