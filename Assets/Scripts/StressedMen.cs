@@ -5,9 +5,15 @@ using UnityEngine;
 public class StressedMen : MonoBehaviour {
 
     [SerializeField] private float _multiplyer;
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+    [SerializeField] private GameObject[] _inventory;
+
+    private void Start()
+    {
+        _inventory = new GameObject[5];
+    }
+
+    // Update is called once per frame
+    void FixedUpdate () {
         Vector2 direction = Vector2.zero;
 
 		if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
@@ -28,5 +34,17 @@ public class StressedMen : MonoBehaviour {
         }
 
         transform.Translate((direction * _multiplyer) * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider2D)
+    {
+        if(collider2D.tag.Equals("Item"))
+        {
+            Debug.Log("You picked up " + collider2D.name);
+        }
+        else if (collider2D.tag.Equals("NPC"))
+        {
+            //show text dialog
+        }
     }
 }
